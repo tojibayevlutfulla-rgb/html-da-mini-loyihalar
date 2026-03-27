@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aslbek - IT Portfolio</title>
+    
+    <!-- CSS QISMI -->
+    <style>
+        /* Umumiy ko'rinish */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117; /* GitHub qora foni */
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Til tanlash tugmalari stili */
+        .lang-switcher {
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+            transform: translateY(-2px);
+        }
+
+        /* Asosiy karta (Portfolio) */
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .code-tag {
+            color: #d2a8ff; /* Binafsharang kod tegi */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+
+        h1 {
+            color: #58a6ff; /* Moviy rang ism uchun */
+            font-size: 35px;
+            margin: 15px 0 5px 0;
+        }
+
+        h3 {
+            color: #7ee787; /* Yashil rang kasb uchun */
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #8b949e;
+            font-size: 17px;
+        }
+
+        /* IT ko'nikmalar (skills) */
+        .skills {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #ff7b72; /* Qizil rang teglar uchun */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TIL TANLASH -->
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="translatePage('uz')">UZB</button>
+        <button class="lang-btn" onclick="translatePage('en')">ENG</button>
+        <button class="lang-btn" onclick="translatePage('ru')">RUS</button>
+    </div>
+
+    <!-- PORTFOLIO KARTASI -->
+    <div class="card">
+        <span class="code-tag">&lt;dev&gt;</span>
+        
+        <h1 id="userName">Aslbek</h1>
+        <h3 id="userJob">Front-End Dasturchi</h3>
+        <p id="userBio">
+            Men zamonaviy veb-texnologiyalarga qiziqaman. Kod yozish orqali muammolarni hal qilish va chiroyli interfeyslar yaratishni yaxshi ko'raman. Kelajakda kuchli mutaxassis bo'lish asosiy maqsadim.
+        </p>
+
+        <div class="skills">
+            #HTML #CSS #JavaScript #Frontend
+        </div>
+
+        <span class="code-tag">&lt;/dev&gt;</span>
+    </div>
+
+    <!-- JAVASCRIPT QISMI -->
+    <script>
+        // Matnlar bazasi
+        const translations = {
+            'uz': {
+                'name': 'Aslbek',
+                'job': 'Front-End Dasturchi',
+                'bio': 'Men zamonaviy veb-texnologiyalarga qiziqaman. Kod yozish orqali muammolarni hal qilish va chiroyli interfeyslar yaratishni yaxshi ko\'raman. Kelajakda kuchli mutaxassis bo\'lish asosiy maqsadim.'
+            },
+            'en': {
+                'name': 'Aslbek',
+                'job': 'Front-End Developer',
+                'bio': 'I am passionate about modern web technologies. I love solving problems through coding and creating beautiful interfaces. My main goal is to become a top-tier software engineer.'
+            },
+            'ru': {
+                'name': 'Аслбек',
+                'job': 'Front-End Разработчик',
+                'bio': 'Я увлекаюсь современными веб-технологиями. Люблю решать задачи с помощью кода и создавать красивые интерфейсы. Моя главная цель — стать высококлассным специалистом.'
+            }
+        };
+
+        // Funksiya: Tilni almashtirish
+        function translatePage(lang) {
+            // HTML elementlarini tanlab olamiz
+            const nameEl = document.getElementById('userName');
+            const jobEl = document.getElementById('userJob');
+            const bioEl = document.getElementById('userBio');
+
+            // Ularning ichidagi matnni lug'atdagiga o'zgartiramiz
+            nameEl.innerText = translations[lang].name;
+            jobEl.innerText = translations[lang].job;
+            bioEl.innerText = translations[lang].bio;
+        }
+    </script>
+
+</body>
+</html>
