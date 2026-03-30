@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aslbek AI - Intellektual Yordamchi</title>
+    <style>
+        /* CSS - Kelajak Texnologiyasi Dizayni */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            width: 450px;
+            height: 600px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.2);
+            position: relative;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .chat-header h2 { margin: 0; font-size: 20px; color: #007bff; letter-spacing: 2px; }
+        .chat-header p { margin: 5px 0 0; font-size: 12px; color: #777; }
+
+        #chat-box {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message { padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 14px; line-height: 1.5; }
+        .user-msg { background: #007bff; align-self: flex-end; color: white; border-bottom-right-radius: 2px; }
+        .ai-msg { background: #222; align-self: flex-start; border: 1px solid #333; border-bottom-left-radius: 2px; }
+
+        .input-area {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+
+        input {
+            flex: 1;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        button {
+            background: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #0056b3; }
+
+        /* Matematik formulalar uchun stil */
+        .math { color: #7ee787; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>GEMINI CLONE</h2>
+            <p>Multilingual & Math Expert AI</p>
+        </div>
+
+        <div id="chat-box">
+            <div class="message ai-msg">Salom! Men Aslbek tomonidan yaratilgan AI modeliman. Qanday savolingiz bor? (UZ/RU/EN)</div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Savol yozing (masalan: 25 * 4)..." onkeypress="handleKey(event)">
+            <button onclick="sendMessage()">Yuborish</button>
+        </div>
+    </div>
+
+    <script>
+        // AI Mantiqi (Simulyatsiya)
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const chatBox = document.getElementById('chat-box');
+            const userText = input.value.trim();
+
+            if (!userText) return;
+
+            // Foydalanuvchi xabari
+            chatBox.innerHTML += `<div class="message user-msg">${userText}</div>`;
+            input.value = '';
+
+            // AI "o'ylayotgan" vaqt
+            setTimeout(() => {
+                const aiResponse = getAIResponse(userText);
+                chatBox.innerHTML += `<div class="message ai-msg">${aiResponse}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 800);
+        }
+
+        function handleKey(e) { if (e.key === 'Enter') sendMessage(); }
+
+        function getAIResponse(text) {
+            const lowerText = text.toLowerCase();
+
+            // 1. Matematika (Oddiy kalkulyator funksiyasi)
+            try {
+                // Agar matnda faqat sonlar va belgilar bo'lsa
+                if (/^[0-9+\-*/().\s]+$/.test(text)) {
+                    return `Natija: <span class="math">${eval(text)}</span>`;
+                }
+            } catch (e) { }
+
+            // 2. Tilni aniqlash va javob berish (UZ/RU/EN)
+            if (lowerText.includes("hello") || lowerText.includes("how are you")) {
+                return "Hello! I'm an AI assistant. I can help you with coding and math.";
+            }
+            if (lowerText.includes("привет") || lowerText.includes("как дела")) {
+                return "Привет! Я искусственный интеллект. Я понимаю русский, английский и узбекский языки.";
+            }
+            if (lowerText.includes("salom") || lowerText.includes("nima qilasan")) {
+                return "Salom! Men murakkab savollarga javob bera oladigan aqlli botman.";
+            }
+            
+            // 3. IT bo'yicha savollar
+            if (lowerText.includes("it") || lowerText.includes("dasturlash")) {
+                return "Dasturlash - bu kelajak! Python, JavaScript va AI yo'nalishlarini o'rganishni maslahat beraman.";
+            }
+
+            return "Tushunmadim, lekin o'rganyapman. Iltimos, matematik amal yoki salom deb yozing!";
+        }
+    </script>
+</body>
+</html>
